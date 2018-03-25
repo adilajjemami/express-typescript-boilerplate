@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "echo \"Running lint\"",
-    "build": "echo \"Running buikd\"",
+    "build": "echo \"Running build\"",
     "security-checker": "echo \"Checking security\"",
     "test": "NODE_ENV=test nyc mocha",
     "coverage": "NODE_ENV=test nyc report --reporter=text-lcov > coverage.lcov",
@@ -27,7 +27,8 @@
       "ts-node/register"
     ],
     "reporter": [
-      "text-summary"
+      "text-summary",
+      "html"
     ],
     "sourceMap": true,
     "instrument": true
