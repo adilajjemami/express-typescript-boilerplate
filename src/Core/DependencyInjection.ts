@@ -1,3 +1,5 @@
+import path from 'path';
+
 /**
  * DependencyInjection class.
  *
@@ -22,7 +24,13 @@ export class DependencyInjection {
     services: { [index: string]: any; },
     parameters: { [index: string]: any; }): Promise<any> {
     try {
-      const file = await this.import(myClass.path + myClass.className);
+      const reg = /rootDir/gi;
+      const classPath = myClass.path.replace(
+        reg,
+        path.join(__dirname, '../../src'),
+      );
+
+      const file = await this.import(classPath + myClass.className);
       const args: any[] = [];
       myClass.arguments.forEach((arg: string) => {
         if (arg.includes('@')) {
@@ -36,7 +44,7 @@ export class DependencyInjection {
 
       return new (file[myClass.className])(...args);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 

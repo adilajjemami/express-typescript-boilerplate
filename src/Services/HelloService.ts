@@ -38,6 +38,7 @@ export class HelloService {
    * @return string
    */
   public sayHelloWorld(): string {
+    console.log('injected rootDir', this.rootDir);
     return 'Hello world! ' + this.fakeService.sayImFake();
   }
 }
