@@ -17,13 +17,12 @@ describe('Core', () => {
         services: {
           fakeService: {
             className: 'FakeService',
-            path: path.join(__dirname, '/../../Services/'),
+            path: 'rootDir/Services/FakePath',
             arguments: [],
           },
         },
-        parameters: {},
       },
-    ).then(done)
+    ).then()
     .catch(() => {
       assert.isTrue(true);
       done();

@@ -1,17 +1,14 @@
-import path from 'path';
-
 const services: { [index: string]: any; } = {
   fakeService: {
     className: 'FakeService',
-    path: path.join(__dirname, '/../../Services/'),
+    path: 'rootDir/Services/',
     arguments: [],
   },
   helloService: {
     className: 'HelloService',
-    path: path.join(__dirname, '/../../Services/'),
+    path: 'rootDir/Services/',
     arguments: ['@fakeService', '%rootDir%'],
   },
-
 };
 
 export default services;
