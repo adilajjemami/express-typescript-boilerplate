@@ -8,7 +8,7 @@
     "build": "echo \"Running buikd\"",
     "security-checker": "echo \"Checking security\"",
     "test": "nyc mocha",
-    "coverage": "nyc report --reporter=json > coverage/coverage.json",
+    "coverage": "nyc mocha --reporter=json > coverage/coverage.json",
     "serve-dev": "echo \"Serving dev\"",
     "precommit": "npm run lint && npm run build && npm run test && npm run security-checker"
   },
