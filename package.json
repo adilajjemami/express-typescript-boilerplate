@@ -7,8 +7,8 @@
     "lint": "echo \"Running lint\"",
     "build": "echo \"Running buikd\"",
     "security-checker": "echo \"Checking security\"",
-    "test": "nyc mocha",
-    "coverage": "nyc mocha --reporter=json > coverage/coverage.json",
+    "test": "NODE_ENV=test nyc mocha",
+    "coverage": "NODE_ENV=test nyc report --reporter=text-lcov > coverage.lcov",
     "serve-dev": "echo \"Serving dev\"",
     "precommit": "npm run lint && npm run build && npm run test && npm run security-checker"
   },
@@ -19,12 +19,15 @@
     "extension": [
       ".ts"
     ],
+    "exclude": [
+      "test/*.spec.ts",
+      "build/**/*.js"
+    ],
     "require": [
       "ts-node/register"
     ],
     "reporter": [
-      "text-summary",
-      "html"
+      "text-summary"
     ],
     "sourceMap": true,
     "instrument": true
