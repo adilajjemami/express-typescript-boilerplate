@@ -9,6 +9,7 @@ cache:
 
 before_script:
   - npm install -g yarn
+  - npm install codecov -g
   - yarn install
 
 script:
@@ -16,3 +17,6 @@ script:
   - npm run build
   - npm run security-checker
   - npm run test
+
+after_success:
+  - codecov
