@@ -36,7 +36,7 @@ export class DependencyInjection {
 
       return new (file[myClass.className])(...args);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 

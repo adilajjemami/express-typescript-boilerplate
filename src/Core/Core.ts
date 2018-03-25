@@ -97,7 +97,7 @@ export class Core {
         result[key] = instance;
       }
     } catch (error) {
-      console.log(error);
+      throw error;
     }
 
     return result;
