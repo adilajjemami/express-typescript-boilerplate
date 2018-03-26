@@ -4,7 +4,7 @@ import { Core } from '../../src/Core/Core';
 import { HelloService } from '../../src/Services/HelloService';
 
 describe('HelloService', () => {
-  it('sayHello() should return I\'m a fake service! I\'m a fake service!', () => {
+  it('sayHello() should return Hello world! I\'m a fake service!', () => {
     Core.bootstrap()
       .then(() => {
         const helloService = new HelloService(
