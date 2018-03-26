@@ -60,18 +60,6 @@ describe('Server', () => {
       });
   });
 
-  // it('start() should start listening', (done) => {
-  //   Server.bootstrap()
-  //     .then((s) => {
-  //       setTimeout(() => { s.start(); }, 0);
-  //       // assert.isDefined(s.getApp());
-  //       done();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // });
-
   it('getApp() should return a express.Application instance', (done) => {
     Server.bootstrap()
       .then((s) => {

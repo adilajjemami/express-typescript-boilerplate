@@ -39,19 +39,6 @@ export class Server {
   }
 
   /**
-   * Start listening method.
-   *
-   * @return void
-   */
-  public start(): void {
-    const port = this.getPort();
-    this.app
-      .listen(port, () => {
-        console.log('application listening on port ' + port);
-      });
-  }
-
-  /**
    * Get application method.
    *
    * @return express.Application
@@ -65,7 +52,7 @@ export class Server {
    *
    * @return any
    */
-  private getPort(): any {
+  public getPort(): any {
     const port = process.env.NODE_PORT;
     if (undefined === port) {
       return 3000;
