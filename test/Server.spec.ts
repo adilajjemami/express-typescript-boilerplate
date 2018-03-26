@@ -56,7 +56,7 @@ describe('Server', () => {
           });
       })
       .catch((err) => {
-        console.log(err);
+        done(err);
       });
   });
 

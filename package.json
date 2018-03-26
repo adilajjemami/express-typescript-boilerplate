@@ -6,10 +6,10 @@
   "scripts": {
     "lint": "node_modules/.bin/tslint -p ./tsconfig.json",
     "build": "node_modules/.bin/tsc",
-    "security-checker": "echo \"Checking security\"",
+    "security-checker": "node_modules/.bin/retire",
     "test": "NODE_ENV=test nyc mocha",
     "coverage": "NODE_ENV=test nyc report --reporter=text-lcov > coverage.lcov",
-    "serve-dev": "echo \"Serving dev\"",
+    "serve-dev": "NODE_ENV=dev node_modules/.bin/ts-node src/index.ts",
     "precommit": "npm run lint && npm run build && npm run test && npm run security-checker"
   },
   "nyc": {
