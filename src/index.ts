@@ -8,9 +8,7 @@ Server.bootstrap()
   const app = s.getApp();
   index.getPort = s.getPort;
   index.httpServer = http.createServer(app);
-  index.httpServer.listen(index.getPort(), () => {
-    console.log('app start listening on port ' + index.getPort());
-  });
+  index.httpServer.listen(index.getPort());
 });
 
 export default index;
