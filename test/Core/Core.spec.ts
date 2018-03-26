@@ -10,6 +10,13 @@ describe('Core', () => {
         assert.isTrue(typeof (Core.getParameter('rootDir')) === 'string');
       });
   });
+
+  it('getRouting() should return an object', () => {
+    Core.bootstrap()
+      .then(() => {
+        assert.isObject(Core.getRouting());
+      });
+  });
   
   it('initServices should throw an error', (done) => {
     Core.initServices(

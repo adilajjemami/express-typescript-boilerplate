@@ -18,6 +18,7 @@ export class Core {
     const cfg = await this.initEnvConfig();
     this.initParameters(cfg);
     this.services = await this.initServices(cfg);
+    this.initRouting(cfg);
   }
 
   /**
@@ -33,6 +34,14 @@ export class Core {
    * @var { [index: string]: any; }
    */
   protected static services: { [index: string]: any; } = {};
+
+  /**
+   * Routing.
+   *
+   * @var { [index: string]: any; }
+   */
+  protected static routing: { [index: string]: any; };
+
 
   /**
    * Get parameter method.
@@ -59,6 +68,18 @@ export class Core {
   public static getService(name: string): any {
     return this.services[name];
   }
+
+  /**
+   * Get routing method.
+   *
+   * @return { [index: string]: any; }
+   *
+   * @static
+   */
+  public static getRouting(): { [index: string]: any; } {
+    return this.routing;
+  }
+
 
   /**
    * Get routing method.
@@ -101,6 +122,19 @@ export class Core {
     }
 
     return result;
+  }
+
+  /**
+   * Get routing method.
+   *
+   * @param config any
+   *
+   * @return void
+   *
+   * @static
+   */
+  private static initRouting(config: any) {
+    this.routing = config.routing;
   }
 
   /**
