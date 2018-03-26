@@ -1,0 +1,7 @@
+{
+  "pageNotFound": {
+    "errorCode": "pageNotFound",
+    "errorDescription": "Page not found.",
+    "status": 404
+  }
+}

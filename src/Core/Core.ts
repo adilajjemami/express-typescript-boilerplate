@@ -1,5 +1,6 @@
 import config from '../Resources/config/config';
 import { DependencyInjection } from './DependencyInjection';
+import { GlobalMessage } from '../Utils/GlobalMessage';
 
 /**
  * Core class.
@@ -15,6 +16,7 @@ export class Core {
    * @static
    */
   public static async bootstrap(): Promise<void> {
+    GlobalMessage.init();
     const cfg = await this.initEnvConfig();
     this.initParameters(cfg);
     this.services = await this.initServices(cfg);
