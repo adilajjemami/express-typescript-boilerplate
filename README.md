@@ -29,6 +29,11 @@ To lint the source code (tsLint):
     npm run lint
 
 
+To test the source code (tsLint):
+
+    npm run test
+
+
 To check security issues (retirejs):
 
     npm run security-checker
