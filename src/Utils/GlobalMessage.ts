@@ -13,13 +13,13 @@ export class GlobalMessage {
    * @async
    */
   public static init(): void {
-    this.errors = require('../Resources/errors.json');
+    this.errors = require('../../Resources/errors.json');
   }
 
   /**
    * Get error method.
    *
-   * @param errorCode 
+   * @param errorCode
    *
    * @return { [index: string]: any }
    *

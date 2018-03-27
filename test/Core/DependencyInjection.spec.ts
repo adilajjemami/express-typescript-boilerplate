@@ -28,6 +28,29 @@ describe('DependencyInjection', () => {
     });
   });
 
+  it('instanciate() should create helloService instance with %rootDir%', (done) => {
+    const fakeService = new FakeService();
+    DependencyInjection.instanciate(
+      {
+        className: 'HelloService',
+        path: 'rootDir/Services/',
+        arguments: ['%rootDir%'],
+      },
+      {
+        fakeService,
+      },
+      {
+        rootDir: path.join(__dirname, '../../src/'),
+      },
+    ).then((instance) => {
+      assert.isTrue(true);
+      done();
+    })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
   it('instanciate() should throw and error', (done) => {
     DependencyInjection.instanciate(
       {

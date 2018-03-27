@@ -10,7 +10,6 @@ describe('HelloController', () => {
       .then((s) => {
         const app = s.getApp();
         const httpServer = http.createServer(app);
-        //httpServer.listen(3000);
         supertest(httpServer)
           .get('/')
           .expect(200)

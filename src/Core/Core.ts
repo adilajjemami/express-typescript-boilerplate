@@ -1,4 +1,4 @@
-import config from '../Resources/config/config';
+import config from '../config/config';
 import { DependencyInjection } from './DependencyInjection';
 import { GlobalMessage } from '../Utils/GlobalMessage';
 
@@ -153,7 +153,7 @@ export class Core {
     // Capitalize the first letter
     env = env.charAt(0).toUpperCase() + env.slice(1);
     // Import the environement configuration
-    const envConfig = await DependencyInjection.import('../Resources/config/config' + env);
+    const envConfig = await DependencyInjection.import('../config/config' + env);
 
     return { ...config, ...envConfig.default };
   }
