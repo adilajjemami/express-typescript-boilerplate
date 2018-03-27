@@ -26,4 +26,30 @@ describe('HelloController', () => {
         done(err);
       });
   });
+
+  // it('POST /hello should return a fake message with param', (done) => {
+  //   Server.bootstrap()
+  //     .then((s) => {
+  //       const app = s.getApp();
+  //       const httpServer = http.createServer(app);
+  //       supertest(httpServer)
+  //         .post('/hello')
+  //         .set('Content-Type', 'application/json')
+  //         .set('Accept', 'application/json')
+  //         .send({ name: 'Adil' })
+  //         .expect(200)
+  //         .end((err, res) => {
+  //           httpServer.close();
+  //           console.log(res.text);
+  //           if (err) {
+  //             console.log(err);
+  //             done(err);
+  //           } else {
+  //             console.log(res.body);
+  //             assert.isDefined(res.body);
+  //             done();
+  //           }
+  //         });
+  //     });
+  // });
 });

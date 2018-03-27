@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import { Core } from './Core/Core';
 import { DependencyInjection } from './Core/DependencyInjection';
 
@@ -45,6 +46,7 @@ export class Server {
    */
   private constructor() {
     this.app = express();
+    this.initMiddlewares();
   }
 
   /**
@@ -71,6 +73,18 @@ export class Server {
   }
 
   /**
+   * Init middlewares method.
+   *
+   * @return void
+   */
+  private initMiddlewares(): void {
+    this.app
+      .use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
+    this.app
+      .use(bodyParser.json()); // parse application/json
+  }
+
+  /**
    * Router method.
    *
    * @return Promise<void>
@@ -86,7 +100,7 @@ export class Server {
       const action = controllerInfo.pop();
       const className = (controllerInfo[0].split('/')).pop();
       const classPath = rootDir + controllerInfo[0];
-      
+
       let controller: { [index: string]: any; };
       if (!this.controllers[classPath]) {
         const file = await DependencyInjection.import(classPath);
