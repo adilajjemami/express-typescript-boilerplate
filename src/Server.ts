@@ -21,10 +21,8 @@ export class Server {
    */
   public static async bootstrap(): Promise<Server> {
     await Core.bootstrap();
-    const s = new Server();
-    await s.routing();
 
-    return s;
+    return new Server();
   }
 
   /**
@@ -47,6 +45,7 @@ export class Server {
   private constructor() {
     this.app = express();
     this.initMiddlewares();
+    this.routing();
   }
 
   /**
@@ -79,9 +78,11 @@ export class Server {
    */
   private initMiddlewares(): void {
     this.app
-      .use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
+      .use(bodyParser.urlencoded({ extended: true }));
     this.app
-      .use(bodyParser.json()); // parse application/json
+      .use(bodyParser.json());
+    this.app
+      .use(bodyParser.json({ type: 'application/json' }));
   }
 
   /**

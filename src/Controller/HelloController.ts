@@ -28,16 +28,12 @@ export class HelloController extends BaseController {
    *
    * @param req  Request
    * @param res  Response
-   * @param next NextFunction
    *
    * @return void
    */
-  public post(req: Request, res: Response, next: NextFunction) {
-    console.log('------------');
-    console.log('req.body', req.body);
-    console.log('------------');
-    res.status(200).json({
-      message: `Hello ${req.body.name}! POST!`,
+  public post(req: Request, res: Response) {
+    res.status(200).send({
+      message: 'Hello ' + req.body.name + '! POST!',
     });
   }
 
@@ -52,7 +48,7 @@ export class HelloController extends BaseController {
    */
   public put(req: Request, res: Response, next: NextFunction) {
     res.status(200).json({
-      message: `Hello ${req.body.name}! PUT`,
+      message: `Hello ${req.body.name}! PUT!`,
     });
   }
 
@@ -67,7 +63,7 @@ export class HelloController extends BaseController {
    */
   public delete(req: Request, res: Response, next: NextFunction) {
     res.status(200).json({
-      message: `Hello ${req.body.name}! DELETE`,
+      message: `Hello ${req.body.name}! DELETE!`,
     });
   }
 }
