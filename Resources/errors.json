@@ -3,5 +3,10 @@
     "errorCode": "pageNotFound",
     "errorDescription": "Page not found.",
     "status": 404
+  },
+  "invalidToken": {
+    "errorCode": "invalidToken",
+    "errorDescription": "Token <%token%> is invalid.",
+    "status": 403
   }
 }

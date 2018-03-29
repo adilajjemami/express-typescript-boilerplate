@@ -1,4 +1,5 @@
 import { GlobalMessage } from './GlobalMessage';
+import { isUndefined } from 'util';
 
 /**
  * Exception class.
@@ -29,9 +30,18 @@ export class ApiError extends Error {
 
   public constructor(errorCode: string, args?: { [index:string]: any }) {
     const error: { [index: string]: any } = GlobalMessage.getError(errorCode);
-    super(error.errorDescription);
+
+    let errorDescription: string = error.errorDescription;
+
+    if (!isUndefined(args)) {
+      for (const key in args) {
+        errorDescription = errorDescription.replace(`%${key}%`, args[key]);
+      }
+    }
+
+    super(errorDescription);
     this.errorCode = error.errorCode;
-    this.errorDescription = error.errorDescription;
+    this.errorDescription = errorDescription;
     this.status = error.status;
 
     // restore prototype chain
