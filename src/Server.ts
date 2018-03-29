@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { Core } from './Core/Core';
 import { DependencyInjection } from './Core/DependencyInjection';
+import { ApiError } from './Utils/ApiError';
 
 /**
  * Server class.
@@ -38,6 +39,13 @@ export class Server {
    * @var { [index: string]: any; }
    */
   protected controllers: { [index: string]: any; } = {};
+
+  /**
+   * Middlewares.
+   *
+   * @var { [index: string]: any; }
+   */
+  protected middlewares: { [index: string]: any; } = {};
 
   /**
    * Constructor
@@ -83,6 +91,20 @@ export class Server {
       .use(bodyParser.json());
     this.app
       .use(bodyParser.json({ type: 'application/json' }));
+
+    const middlewares = Core.getMiddlewares();
+    for (const key in middlewares) {
+      DependencyInjection.instanciate(
+        middlewares[key],
+        Core.getServices(),
+        Core.getParameters(),
+      ).then((instance) => {
+        this.middlewares[key] = instance.handle.bind(instance);
+        if (middlewares[key].global) {
+          this.app.use(this.middlewares[key]);
+        }
+      });
+    }
   }
 
   /**
@@ -96,7 +118,7 @@ export class Server {
     const routes = Core.getRouting();
     const rootDir = Core.getParameter('rootDir');
     for (const routeName in routes) {
-      const route: { [index: string]: any; } = Core.getRouting()[routeName];
+      const route: { [index: string]: any; } = routes[routeName];
       const controllerInfo = route.controller.split(':');
       const action = controllerInfo.pop();
       const className = (controllerInfo[0].split('/')).pop();
@@ -129,5 +151,10 @@ export class Server {
 
       this.app.use(expressRouter);
     }
+
+    this.app
+      .all('*', (req: express.Request, res: express.Response, next: express.NextFunction) => {
+        throw new ApiError('pageNotFound');
+      });
   }
 }

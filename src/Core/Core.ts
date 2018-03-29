@@ -20,6 +20,7 @@ export class Core {
     const cfg = await this.initEnvConfig();
     this.initParameters(cfg);
     this.services = await this.initServices(cfg);
+    this.initMiddlewares(cfg);
     this.initRouting(cfg);
   }
 
@@ -44,6 +45,13 @@ export class Core {
    */
   protected static routing: { [index: string]: any; };
 
+  /**
+   * Middlewares.
+   *
+   * @var { [index: string]: any; }
+   */
+  protected static middlewares: { [index: string]: any; };
+
 
   /**
    * Get parameter method.
@@ -56,6 +64,17 @@ export class Core {
    */
   public static getParameter(name: string): any {
     return this.parameters[name];
+  }
+
+  /**
+   * Get parameters method.
+   *
+   * @return { [index: string]: any; }
+   *
+   * @static
+   */
+  public static getParameters(): { [index: string]: any; } {
+    return this.parameters;
   }
 
   /**
@@ -72,6 +91,17 @@ export class Core {
   }
 
   /**
+   * Get services method.
+   *
+   * @return { [index: string]: any; }
+   *
+   * @static
+   */
+  public static getServices(): { [index: string]: any; } {
+    return this.services;
+  }
+
+  /**
    * Get routing method.
    *
    * @return { [index: string]: any; }
@@ -80,6 +110,17 @@ export class Core {
    */
   public static getRouting(): { [index: string]: any; } {
     return this.routing;
+  }
+
+  /**
+   * Get middlewares method.
+   *
+   * @return { [index: string]: any; }
+   *
+   * @static
+   */
+  public static getMiddlewares(): { [index: string]: any; } {
+    return this.middlewares;
   }
 
 
@@ -137,6 +178,19 @@ export class Core {
    */
   private static initRouting(config: any) {
     this.routing = config.routing;
+  }
+
+  /**
+   * Get middlewares method.
+   *
+   * @param config any
+   *
+   * @return void
+   *
+   * @static
+   */
+  private static initMiddlewares(config: any) {
+    this.middlewares = config.middlewares;
   }
 
   /**
