@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prooofzizoo/express-typescript-boilerplate.git"
+    "url": "git+https://github.com/adilajjemami/express-typescript-boilerplate.git"
   },
   "keywords": [
     "node",
@@ -50,9 +50,9 @@
   "author": "Adil AJJEMAMI <adilajjemami@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/prooofzizoo/express-typescript-boilerplate/issues"
+    "url": "https://github.com/adilajjemami/express-typescript-boilerplate/issues"
   },
-  "homepage": "https://github.com/prooofzizoo/express-typescript-boilerplate#readme",
+  "homepage": "https://github.com/adilajjemami/express-typescript-boilerplate#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
