@@ -1,13 +1,11 @@
 ## Table of Contents
 
 <!-- toc -->
-
-    - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Introduction](#introduction)
     - [Project Structure](#project-structure)
     - [Server](#server)
-    - [NPM Scripts](#npm-scripts)
+- [NPM Scripts](#npm-scripts)
     - [Code Linting](#code-linting)
     - [Code Testing](#code-testing)
     - [Check Security](#check-security)
