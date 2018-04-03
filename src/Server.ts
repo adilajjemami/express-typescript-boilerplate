@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import helmet from 'helmet';
 import { Core } from './Core/Core';
 import { DependencyInjection } from './Core/DependencyInjection';
 import { ApiError } from './Utils/ApiError';
@@ -85,6 +86,8 @@ export class Server {
    * @return void
    */
   private initMiddlewares(): void {
+    this.app
+      .use(helmet());
     this.app
       .use(bodyParser.urlencoded({ extended: true }));
     this.app

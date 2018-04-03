@@ -27,7 +27,7 @@ export class DependencyInjection {
       const reg = /rootDir/gi;
       const classPath = myClass.path.replace(
         reg,
-        path.join(__dirname, '../'),
+        path.join(__dirname, '..'),
       );
 
       const file = await this.import(classPath + myClass.className);
