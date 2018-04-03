@@ -25,6 +25,14 @@ export class ErrorMiddleware {
           errorCode: err.getErrorCode(),
           errorDescription: err.getErrorDescription(),
         });
+    } else {
+      const error = new ApiError('internalError');
+      res.status(error.getStatus())
+        .json({
+          errorCode: error.getErrorCode(),
+          errorDescription: error.getErrorDescription(),
+        });
+
     }
     next();
   }
