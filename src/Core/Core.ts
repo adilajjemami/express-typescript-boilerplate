@@ -203,7 +203,8 @@ export class Core {
    * @async
    */
   private static async initEnvConfig(): Promise<any> {
-    let env = process.env.NODE_ENV || 'dev';
+    /* istanbul ignore next */
+    let env = process.env.NODE_ENV || /* istanbul ignore next */'dev';
     // Capitalize the first letter
     env = env.charAt(0).toUpperCase() + env.slice(1);
     // Import the environement configuration

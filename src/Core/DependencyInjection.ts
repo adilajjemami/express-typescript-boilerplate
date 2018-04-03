@@ -36,7 +36,7 @@ export class DependencyInjection {
         if (arg.includes('@')) {
           const serviceName = arg.substring(1, arg.length).trim();
           args.push(services[serviceName]);
-        } else if (arg.includes('%')) {
+        } /* istanbul ignore next */ else if (arg.includes('%')) {
           const parameterName = arg.substring(1, arg.length - 1).trim();
           args.push(parameters[parameterName]);
         }
