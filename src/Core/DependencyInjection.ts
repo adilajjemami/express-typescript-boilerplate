@@ -27,7 +27,7 @@ export class DependencyInjection {
       const reg = /rootDir/gi;
       const classPath = myClass.path.replace(
         reg,
-        path.join(__dirname, '../'),
+        path.join(__dirname, '..'),
       );
 
       const file = await this.import(classPath + myClass.className);
@@ -36,7 +36,7 @@ export class DependencyInjection {
         if (arg.includes('@')) {
           const serviceName = arg.substring(1, arg.length).trim();
           args.push(services[serviceName]);
-        } else if (arg.includes('%')) {
+        } /* istanbul ignore next */ else if (arg.includes('%')) {
           const parameterName = arg.substring(1, arg.length - 1).trim();
           args.push(parameters[parameterName]);
         }

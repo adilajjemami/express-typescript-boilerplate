@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import helmet from 'helmet';
 import { Core } from './Core/Core';
 import { DependencyInjection } from './Core/DependencyInjection';
 import { ApiError } from './Utils/ApiError';
@@ -86,6 +87,8 @@ export class Server {
    */
   private initMiddlewares(): void {
     this.app
+      .use(helmet());
+    this.app
       .use(bodyParser.urlencoded({ extended: true }));
     this.app
       .use(bodyParser.json());
@@ -100,6 +103,7 @@ export class Server {
         Core.getParameters(),
       ).then((instance) => {
         this.middlewares[key] = instance.handle.bind(instance);
+        /* istanbul ignore next */
         if (middlewares[key].global) {
           this.app.use(this.middlewares[key]);
         }

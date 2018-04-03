@@ -39,6 +39,7 @@ export class ApiError extends Error {
       }
     }
 
+    /* istanbul ignore next */
     super(errorDescription);
     this.errorCode = error.errorCode;
     this.errorDescription = errorDescription;
@@ -46,6 +47,7 @@ export class ApiError extends Error {
 
     // restore prototype chain
     const actualProto = new.target.prototype;
+    /* istanbul ignore next */
     if (Object.setPrototypeOf) {
       Object.setPrototypeOf(this, actualProto);
     }
