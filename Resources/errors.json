@@ -1,4 +1,9 @@
 {
+  "internalError": {
+    "errorCode": "internalError",
+    "errorDescription": "Internal error.",
+    "status": 500
+  },
   "pageNotFound": {
     "errorCode": "pageNotFound",
     "errorDescription": "Page not found.",
