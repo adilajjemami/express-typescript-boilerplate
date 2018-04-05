@@ -33,12 +33,15 @@ export class DependencyInjection {
       const file = await this.import(classPath + myClass.className);
       const args: any[] = [];
       myClass.arguments.forEach((arg: string) => {
-        if (arg.includes('@')) {
-          const serviceName = arg.substring(1, arg.length).trim();
-          args.push(services[serviceName]);
-        } /* istanbul ignore next */ else if (arg.includes('%')) {
-          const parameterName = arg.substring(1, arg.length - 1).trim();
-          args.push(parameters[parameterName]);
+        switch (arg.charAt(0)) {
+          case '@':
+            const serviceName = arg.substring(1, arg.length).trim();
+            args.push(services[serviceName]);
+            break;
+          case '%':
+            const parameterName = arg.substring(1, arg.length - 1).trim();
+            args.push(parameters[parameterName]);
+            break;
         }
       });
 

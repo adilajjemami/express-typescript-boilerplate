@@ -1,7 +1,6 @@
 import 'mocha';
 import { assert } from 'chai';
 import sinon, { SinonSandbox } from 'sinon';
-import http from 'http';
 import { ApiError } from '../../src/Utils/ApiError';
 import { GlobalMessage } from '../../src/Utils/GlobalMessage';
 import { Request, Response } from 'express';
