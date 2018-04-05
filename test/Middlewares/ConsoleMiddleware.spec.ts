@@ -3,9 +3,9 @@ import { assert } from 'chai';
 import { Request, Response } from 'express';
 import { ConsoleMiddleware } from '../../src/Middlewares/ConsoleMiddleware';
 
-describe('ErrorMiddleware', () => {
+describe('ConsoleMiddleware', () => {
 
-  it('handle should return a json response with pageNotFound error', (done) => {
+  it('handle should log request object', (done) => {
     try {
       const consoleMiddlware = new ConsoleMiddleware();
       consoleMiddlware.handle(<Request>{}, <Response>{}, () => {});
