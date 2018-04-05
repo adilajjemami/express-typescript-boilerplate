@@ -10,6 +10,7 @@ export class ErrorMiddleware {
   /**
    * Handle method.
    *
+   * @param err  any
    * @param req  Request
    * @param res  Response
    * @param next NextFunction

@@ -103,7 +103,7 @@ export class Server {
         Core.getParameters(),
       ).then((instance) => {
         this.middlewares[key] = instance.handle.bind(instance);
-        /* istanbul ignore next */
+
         if (middlewares[key].global) {
           this.app.use(this.middlewares[key]);
         }

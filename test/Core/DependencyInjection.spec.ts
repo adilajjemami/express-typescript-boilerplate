@@ -51,6 +51,29 @@ describe('DependencyInjection', () => {
       });
   });
 
+  it('instanciate() should create helloService instance with @fakeService', (done) => {
+    const fakeService = new FakeService();
+    DependencyInjection.instanciate(
+      {
+        className: 'HelloService',
+        path: 'rootDir/Services/',
+        arguments: ['@fakeService'],
+      },
+      {
+        fakeService,
+      },
+      {
+        rootDir: path.join(__dirname, '../../src/'),
+      },
+    ).then((instance) => {
+      assert.isTrue(true);
+      done();
+    })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
   it('instanciate() should throw and error', (done) => {
     DependencyInjection.instanciate(
       {
