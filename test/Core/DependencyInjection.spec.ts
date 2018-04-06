@@ -69,9 +69,31 @@ describe('DependencyInjection', () => {
       assert.isTrue(true);
       done();
     })
-      .catch((err) => {
-        console.log(err);
-      });
+    .catch((err) => {
+      done(err);
+    });
+  });
+
+  it('instanciate() should throw an error', (done) => {
+    DependencyInjection.instanciate(
+      {
+        className: 'FakeService',
+        path: 'rootDir/Services/',
+        arguments: ['toto'],
+      },
+      {
+        toto: 'toto',
+      },
+      {
+        rootDir: path.join(__dirname, '../../src/'),
+      },
+    ).then((instance) => {
+      assert.isTrue(true);
+      done();
+    })
+    .catch((err) => {
+      done(err);
+    });
   });
 
   it('instanciate() should throw and error', (done) => {
