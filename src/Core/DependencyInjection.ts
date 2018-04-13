@@ -29,19 +29,17 @@ export class DependencyInjection {
         reg,
         path.join(__dirname, '..'),
       );
-
       const file = await this.import(classPath + myClass.className);
+
       const args: any[] = [];
       myClass.arguments.forEach((arg: string) => {
-        switch (arg.charAt(0)) {
-          case '@':
-            const serviceName = arg.substring(1, arg.length).trim();
-            args.push(services[serviceName]);
-            break;
-          case '%':
-            const parameterName = arg.substring(1, arg.length - 1).trim();
-            args.push(parameters[parameterName]);
-            break;
+        const firstChar = arg.charAt(0);
+        if (firstChar === '@') {
+          const serviceName = arg.substring(1, arg.length).trim();
+          args.push(services[serviceName]);
+        } else if (firstChar === '%') {
+          const parameterName = arg.substring(1, arg.length - 1).trim();
+          args.push(parameters[parameterName]);
         }
       });
 
